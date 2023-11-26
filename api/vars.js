@@ -24,7 +24,7 @@ const handler = (req, res) => {
 
   // List documents to find a document with ID matching varName
   databases
-    .listDocuments(databaseId, collectionId, varName)
+    .listDocuments(databaseId, collectionId, [varName])
     .then((response) => {
       const document = response.documents[0];
 
