@@ -15,7 +15,7 @@ client
   );
 
 // Serverless function handler
-module.exports.handler = (req, res) => {
+const handler = (req, res) => {
   const varName = req.query.varName; // Extract varName from URL
 
   // List documents to find a document with ID matching varName
@@ -39,3 +39,4 @@ module.exports.handler = (req, res) => {
       res.end(JSON.stringify({ error: "Internal Server Error" }));
     });
 };
+module.exports = handler;
