@@ -1,27 +1,48 @@
-// Implement a way to get all the environment vars from the Vercel API and then
-// put them all in an iterable
-// see if the value of parameter in the url of this func is equal to any of the environment vars
-// if it does, return the value associated with the var
+const express = require('express');
+const router = express.Router();
+const token = process.env.VERCEL_AUTH_TOKEN_FOR_ENV_HUB;
 
-// Implement a function to get all the environment vars from the Vercel API
-async function getEnvironmentVars() {
-    // Make a request to the Vercel API to get the environment vars
-    const response = await fetch('https://api.vercel.com/v1/projects/EnvHub/env');
-    const data = await response.json();
+// function to fetch the vars from Vercel API
+const fetchVarsFromVercel = async () => {
+  // Make a request to the Vercel API to get the environment vars
+  const response = await fetch(
+    "https://api.vercel.com/v1/projects/EnvHub/env",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  const data = await response.json();
 
-    // Put all the environment vars in an iterable
-    const environmentVars = Object.entries(data).map(([key, value]) => ({ key, value }));
+  // Put all the environment vars in an iterable
+  const environmentVars = Object.entries(data).map(([key, value]) => ({
+    key,
+    value,
+  }));
 
-    return environmentVars;
-}
+  return environmentVars;
+};
 
-// Implement a function to check if the value of a parameter in the URL is equal to any of the environment vars
-function checkParameterValue(parameter, environmentVars) {
-    const matchedVar = environmentVars.find((envVar) => envVar.value === parameter);
+router.get('/:varName', async (req, res) => {
+  const varName = req.params.varName;
+  
+  if (varName === "VERCEL_AUTH_TOKEN_FOR_ENV_HUB") {
+    res.status(404).send({ msg: "Variable not found", status: 405 });
+    return;
+  }
+  
+  try {
+    const varsFromVercel = await fetchVarsFromVercel();
+    const matchedVar = varsFromVercel.find((envVar) => envVar.key === varName);
 
     if (matchedVar) {
-        return matchedVar.value;
+      res.send({ value: matchedVar.value });
+    } else {
+      res.status(404).send({ msg: 'Variable not found', status: 404 });
     }
-
-    return null;
-}
+  } catch (error) {
+    console.error('Error retrieving vars:', error);
+    res.status(500).send({ msg: 'Error Retrieving vars for Database', status: 500 });
+  }
+});
