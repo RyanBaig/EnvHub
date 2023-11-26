@@ -3,5 +3,7 @@
         "**/api/**": {
             "maxDuration": 10
         }
-    }
+    },
+    "buildCommand": "npm i express"
+
 }
