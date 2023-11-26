@@ -35,6 +35,7 @@ module.exports = async (req, res) => {
 
   try {
     const varsFromVercel = await fetchVarsFromVercel();
+    console.log(varsFromVercel);
     const matchedVar = varsFromVercel.find((envVar) => envVar.key === varName);
 
     if (matchedVar) {
