@@ -19,14 +19,15 @@ const fetchVarsFromVercel = async () => {
       `Error fetching vars from Vercel API: ${response.statusText}`
     );
   }
-
+  console.log(response.json());
   return response.json();
+  
 };
 
 module.exports = async (req, res) => {
   
   const varName = req.query.varName;
-  console.info(varName)
+  console.log(varName)
   if (varName === "VERCEL_AUTH_TOKEN_FOR_ENV_HUB") {
     res.status(404).json({ msg: "Variable not found", status: 404 });
     return;
