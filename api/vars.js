@@ -6,8 +6,9 @@ const client = new sdk.Client();
 // Initialize the Databases service
 const databases = new sdk.Databases(client);
 
-// Add the Collection ID
-const collectionId = "env_vars";
+// Add the Collection ID and DB ID
+const databaseId = "env_vars";
+const collectionId = "key-value-pairs";
 
 // Set Appwrite configurations
 client
@@ -23,7 +24,7 @@ const handler = (req, res) => {
 
   // List documents to find a document with ID matching varName
   databases
-    .listDocuments(collectionId, [], varName)
+    .listDocuments(databaseId, collectionId, varName)
     .then((response) => {
       const document = response.documents[0];
 
