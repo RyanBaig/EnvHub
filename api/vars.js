@@ -19,7 +19,7 @@ const fetchVarsFromVercel = async () => {
       `Error fetching vars from Vercel API: ${response.statusText}`
     );
   }
-  console.log(response.json());
+  
   return response.json();
   
 };
