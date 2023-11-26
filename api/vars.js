@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+import fetch from "node-fetch";
 
 const token = "QUhi52tmDlQBhj39M0Ug3tLo";
 
