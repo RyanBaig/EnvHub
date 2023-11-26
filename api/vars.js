@@ -24,7 +24,13 @@ const collectionId = "key-value-pair";
 const handler = async (req, res) => {
   try {
     const varName = req.query.varName;
-    const response = await databases.listDocuments(databaseId, collectionId, [varName]);
+    const response = await databases.listDocuments(databaseId, collectionId, {
+      filter: {
+        eq: {
+          documentId: varName,
+        },
+      },
+    });
     if (response.documents.length > 0) {
       const document = response.documents[0];
       const value = document.fields.value;
