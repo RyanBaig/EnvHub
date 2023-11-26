@@ -26,9 +26,9 @@ const fetchVarsFromVercel = async () => {
 
 router.get('/:varName', async (req, res) => {
   const varName = req.params.varName;
-  
+  console.log("YAHOOO")
   if (varName === "VERCEL_AUTH_TOKEN_FOR_ENV_HUB") {
-    res.status(404).send({ msg: "Variable not found", status: 405 });
+    res.status(404).send({ msg: "Variable not found", status: 404 });
     return;
   }
   
