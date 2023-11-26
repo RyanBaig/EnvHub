@@ -1,0 +1,58 @@
+a home page ✓
+a page to add ✓
+a page to edit ✓
+a page to list ✓
+a page to retreieve ✓
+
+
+API ENDPOINT:
+(https://api.vercel.com/v10/projects/envhub/env)
+await fetch("https://api.vercel.com/v10/projects/prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA/env", {
+  "body": {
+    "key": "API_URL",
+    "value": "https://api.vercel.com",
+    "type": "plain",
+    "target": [
+      "production",
+      "preview"
+    ]
+  },
+  "headers": {
+    "Authorization": "Bearer <TOKEN>"
+  },
+  "method": "post"
+})
+
+This is my current idea for the project:
+there is a home page for intro
+there is a settings page where u set the vars
+the vars with the values are sent to the vercel API to set them as environment variables for the website.
+then the user is given an api endpoint (prob like /api/vars/(the var name they inserted))
+the user can also see the vars he created and can also rename/delete them
+ChatGPT
+Your project idea sounds well-structured and user-focused. Here are some additional considerations and suggestions:
+
+User-Friendly Interface:
+
+Ensure that both the home page and settings page have a user-friendly and intuitive design. Use clear and concise language to guide users through the process.
+Interactive Settings Page:
+
+Make the settings page interactive, allowing users to easily add, edit, and delete environment variables. Consider using form validation to prevent errors.
+API Endpoint Visibility:
+
+Clearly display the generated API endpoint for each variable. Consider providing a copy-to-clipboard feature for convenience.
+Variable Management:
+
+Implement a page where users can view, rename, and delete their existing variables. This adds flexibility and control for users managing their environment.
+Security Measures:
+
+Since you're dealing with sensitive information like environment variables, prioritize security. Use HTTPS, encrypt data in transit, and implement secure coding practices.
+Documentation:
+
+Provide clear documentation or tooltips to guide users on how to use the service effectively. This can include explanations of API endpoints, variable naming conventions, etc.
+Feedback Mechanism:
+
+Implement feedback mechanisms, such as success messages or error notifications, to keep users informed about the status of their actions.
+User Account Management (Optional):
+
+If applicable, consider adding user accounts to allow users to save and manage their environment variables across sessions.
