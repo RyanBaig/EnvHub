@@ -7,7 +7,7 @@ const client = new sdk.Client();
 const databases = new sdk.Databases(client);
 
 // Add the Collection ID
-const collectionId = "key-value-pairs";
+const collectionId = "env_vars";
 
 // Set Appwrite configurations
 client
