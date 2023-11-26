@@ -20,23 +20,13 @@ const collectionId = "key-value-pair";
 // Serverless function handler
 const handler = async (req, res) => {
   try {
-    const varName = req.query.varName; // Extract varName from URL
-
-    // Create a query to filter by document ID
-    const query = new sdk.Query();
-    query.setFilters([`$id=${varName}`]);
-
-    // List documents with the specified query
-    const response = await databases.listDocuments(databaseId, collectionId, [
-      query,
-    ]);
-
-    // Extract the value from the first document (assuming there's only one match)
+    const varName = req.query.varName;
+    const response = await databases.listDocuments(databaseId, collectionId, [varName]);
     if (response.documents.length > 0) {
       const document = response.documents[0];
       const value = document.fields.value;
       res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ varName, value }));
+      res.end(JSON.stringify({ varName: document.name, value }));
     } else {
       res.writeHead(404, { "Content-Type": "application/json" });
       res.end(JSON.stringify({ error: "Variable not found" }));
