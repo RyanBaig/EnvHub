@@ -8,7 +8,7 @@ appwrite
   .setProject("envhub");
 
 // Initialize Appwrite database
-const database = new Appwrite.Database(appwrite);
+const database = new Client.Database(appwrite);
 const collectionId = "key-value-pairs";
 
 // Serverless function handler
