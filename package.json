@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "appwrite": "^13.0.1",
+    "node-appwrite": "^11.1.0",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {},

@@ -1,52 +1,43 @@
-import fetch from "node-fetch";
 
-const token = "QUhi52tmDlQBhj39M0Ug3tLo";
+const Appwrite = require("appwrite");
 
-// Function to fetch the vars from Vercel API
-const fetchVarsFromVercel = async () => {
-  const response = await fetch(
-    "https://api.vercel.com/v1/projects/EnvHub/env",
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
+// Initialize Appwrite client
+const appwrite = new Appwrite();
+
+appwrite
+  .setEndpoint("https://cloud.appwrite.io/v1")
+  .setProject("envhub")
+  .setKey(
+    "658ee3ae6bf33c40348e1068bf0ee92773b07eb5f2b53152232e1434ea563b5b0d2bb799f911db728e51f2557e7efb16b9f971a2ae9df90f3a2f042e746203aa8c6776b6420c4f91315a95bfa565ebc13c56d283cefa51a11882d09cbcd1849f532b8a5cdebebc35fec980baa9c1a2ed33a0d5c82cbf68b40539b2a6b9b457a4"
   );
 
-  if (!response.ok) {
-    throw new Error(
-      `Error fetching vars from Vercel API: ${response.statusText}`
-    );
-  }
-  
-  return response.json();
-  
-};
+// Initialize Appwrite database
+const database = new Appwrite.Database(appwrite);
+const collectionId = "key-value-pairs";
 
-module.exports = async (req, res) => {
+// Serverless function handler
+exports.handler = (req, res) => {
   
-  const varName = req.query.varName;
-  console.log(varName)
-  if (varName === "VERCEL_AUTH_TOKEN_FOR_ENV_HUB") {
-    res.status(404).json({ msg: "Variable not found", status: 404 });
-    return;
-  }
+  const varName = req.query.varName; // Extract varName from URL
 
-  try {
-    const varsFromVercel = await fetchVarsFromVercel();
-    console.log(varsFromVercel);
-    const matchedVar = varsFromVercel.find((envVar) => envVar.key === varName);
+  // List documents to find a document with ID matching varName
+  database
+    .listDocuments(collectionId, [], varName)
+    .then((response) => {
+      const document = response.documents[0];
 
-    if (matchedVar) {
-      res.status(200).json({ value: matchedVar.value });
-    } else {
-      res.status(404).json({ msg: "Variable not found", status: 404 });
-    }
-  } catch (error) {
-    console.error("Error retrieving vars:", error);
-    res
-      .status(500)
-      .json({ msg: "Error Retrieving vars for Database", status: 500 });
-  }
+      if (document) {
+        const value = document.fields.value;
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ varName, value }));
+      } else {
+        res.writeHead(404, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Variable not found" }));
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      res.writeHead(500, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Internal Server Error" }));
+    });
 };
