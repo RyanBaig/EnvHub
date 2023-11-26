@@ -1,5 +1,4 @@
-
-const Appwrite = require("appwrite");
+const { Appwrite } = require("appwrite");
 
 // Initialize Appwrite client
 const appwrite = new Appwrite();
