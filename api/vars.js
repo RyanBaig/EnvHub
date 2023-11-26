@@ -15,7 +15,7 @@ client
   );
 
 // Serverless function handler
-exports.handler = (req, res) => {
+module.exports.handler = (req, res) => {
   const varName = req.query.varName; // Extract varName from URL
 
   // List documents to find a document with ID matching varName
