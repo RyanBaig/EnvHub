@@ -1,7 +1,7 @@
-const { Appwrite } = require("appwrite");
+const { Client } = require("appwrite");
 
 // Initialize Appwrite client
-const appwrite = new Appwrite();
+const appwrite = new Client();
 
 appwrite
   .setEndpoint("https://cloud.appwrite.io/v1")
