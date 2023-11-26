@@ -6,6 +6,9 @@ const client = new sdk.Client();
 // Initialize the Databases service
 const databases = new sdk.Databases(client);
 
+// Add the Collection ID
+const collectionId = "key-value-pairs";
+
 // Set Appwrite configurations
 client
   .setEndpoint("https://cloud.appwrite.io/v1")
