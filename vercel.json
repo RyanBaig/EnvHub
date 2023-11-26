@@ -1,6 +1,6 @@
 {
     "functions": {
-        "**/api/**": {
+        "api/vars.js": {
             "maxDuration": 10
         }
     },
