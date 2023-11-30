@@ -5,23 +5,7 @@ a page to list ✓
 a page to retreieve ✓
 
 
-API ENDPOINT:
-(https://api.vercel.com/v10/projects/envhub/env)
-await fetch("https://api.vercel.com/v10/projects/prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA/env", {
-  "body": {
-    "key": "API_URL",
-    "value": "https://api.vercel.com",
-    "type": "plain",
-    "target": [
-      "production",
-      "preview"
-    ]
-  },
-  "headers": {
-    "Authorization": "Bearer <TOKEN>"
-  },
-  "method": "post"
-})
+
 
 This is my current idea for the project:
 there is a home page for intro
