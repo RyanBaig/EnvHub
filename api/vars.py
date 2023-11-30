@@ -15,6 +15,9 @@ client = Client()
 db_id = "env_vars"
 collection_id = "key-value-pair"
 
+database = Databases(client)
+result = database.get_document(db_id, collection_id, doc_id)
+
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         try:
