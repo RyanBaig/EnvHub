@@ -47,21 +47,21 @@ class handler(BaseHTTPRequestHandler):
                 return
 
             try:
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                print("Result:", result)
+                # Set the headers before sending the response code
                 self.send_response(200)
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
+
+                print("Result:", result)
                 response = {'statusCode': 200, 'value': result.get("value", "")}
                 self.wfile.write(json.dumps(response).encode())
             except Exception as e:
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-                print("Error:", e)
+                # Set the headers before sending the response code
                 self.send_response(500)
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
+
+                print("Error:", e)
                 response = {
                     'statusCode': 500,
                     'errors': str(e),
@@ -73,15 +73,15 @@ class handler(BaseHTTPRequestHandler):
                 self.wfile.write(json.dumps(response).encode())
 
         except Exception as e:
+            # Set the headers before sending the response code
+            self.send_response(400)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
+
             # Log the exception and relevant information
             print("Exception:", e)
             print("Document ID:", doc_id)
             result = database.get_document(db_id, collection_id, doc_id)
-            self.send_response(400)
-            self.send_header('Content-type', 'application/json')
-            self.end_headers()
             response = {
                 'statusCode': 400,
                 'errors': str(e),
