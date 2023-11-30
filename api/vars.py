@@ -42,7 +42,7 @@ class handler(BaseHTTPRequestHandler):
 
             database = Databases(client)
 
-            
+            result = database.get_document(db_id, collection_id, doc_id)
             try:
                 result = database.get_document(db_id, collection_id, doc_id)
                 print("Result:", result)
