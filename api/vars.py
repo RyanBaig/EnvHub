@@ -16,7 +16,7 @@ db_id = "env_vars"
 collection_id = "key-value-pair"
 
 class handler(BaseHTTPRequestHandler):
-    def handle_request(self):
+    def do_GET(self):
         try:
             # Split the path into parts
             path_parts = self.path.split('/')
