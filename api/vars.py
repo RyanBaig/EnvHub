@@ -37,7 +37,7 @@ class handler(BaseHTTPRequestHandler):
             doc_id: str = var_name
 
             result = database.get_document(db_id, collection_id, doc_id)
-            
+
             if not doc_id:
                 self.send_response(400)
                 self.send_header('Content-type', 'application/json')
@@ -45,7 +45,7 @@ class handler(BaseHTTPRequestHandler):
                 self.wfile.write({"message": "varName parameter is required"})
                 return
                 
-            database = Databases(client)
+            
 
             result = database.get_document(db_id, collection_id, doc_id)
             try:
@@ -71,7 +71,7 @@ class handler(BaseHTTPRequestHandler):
                 self.wfile.write(json.dumps(response).encode())
 
         except Exception as e:
-            database = Databases(client)
+            
             result = database.get_document(db_id, collection_id, doc_id)
             self.send_response(400)
             self.send_header('Content-type', 'application/json')
