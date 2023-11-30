@@ -2,7 +2,7 @@
     "functions": {
         "api/vars.py": {
             "maxDuration": 10,
-            "runtime": "vercel-python@3.8"
+            "runtime": "vercel-python@0.2.1"
         }
     },
     "cleanUrls": true
