@@ -13,6 +13,8 @@ db_id = "env_vars"
 collection_id = "key-value-pair"
 
 class MyHandler(BaseHTTPRequestHandler):
+    def __init__(self, request, client_address, server):
+        super().__init__(request, client_address, server)
     def do_GET(self, event=None, context=None):
         try:
             # Split the path into parts
