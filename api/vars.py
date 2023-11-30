@@ -34,7 +34,6 @@ class handler(BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write({"message": "Varname parameter is required"})
                 return
-            global doc_id
             doc_id: str = var_name
 
             if not doc_id:
