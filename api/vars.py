@@ -16,6 +16,7 @@ db_id = "env_vars"
 collection_id = "key-value-pair"
 
 database = Databases(client)
+
 result = database.get_document(db_id, collection_id, doc_id)
 
 class handler(BaseHTTPRequestHandler):
@@ -33,8 +34,8 @@ class handler(BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write({"message": "Varname parameter is required"})
                 return
-
-            doc_id = var_name
+            global doc_id
+            doc_id: str = var_name
 
             if not doc_id:
                 self.send_response(400)
