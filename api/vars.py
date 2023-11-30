@@ -16,8 +16,6 @@ db_id = "env_vars"
 collection_id = "key-value-pair"
 
 class MyHandler(BaseHTTPRequestHandler):
-    def __init__(self, request, client_address, server):
-        super().__init__(request, client_address, server)
     def do_GET(self, event=None, context=None):
         try:
             # Split the path into parts
@@ -77,4 +75,4 @@ class MyHandler(BaseHTTPRequestHandler):
 #     httpd = HTTPServer(server_address, MyHandler)
 #     print('Starting server...')
 #     httpd.serve_forever()
-handler = MyHandler(request="request", client_address="client_address", server="server")
+handler = MyHandler()
