@@ -66,6 +66,8 @@ class handler(BaseHTTPRequestHandler):
                 self.wfile.write(json.dumps(response).encode())
 
         except Exception as e:
+            database = Databases(client)
+            result = database.get_document(db_id, collection_id, doc_id)
             self.send_response(400)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
