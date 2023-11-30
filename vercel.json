@@ -1,6 +1,6 @@
 {
     "functions": {
-        "api/vars.js": {
+        "api/vars.py": {
             "maxDuration": 10
         }
     },
