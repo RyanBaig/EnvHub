@@ -77,4 +77,4 @@ class MyHandler(BaseHTTPRequestHandler):
 #     httpd = HTTPServer(server_address, MyHandler)
 #     print('Starting server...')
 #     httpd.serve_forever()
-handler = MyHandler()
+handler = MyHandler(request=None, client_address=None, server=None)
