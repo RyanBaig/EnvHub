@@ -1,6 +1,6 @@
 import json
 from http.server import BaseHTTPRequestHandler
-
+from appwrite.exception import AppwriteException
 from appwrite.client import Client
 from appwrite.services.databases import Databases
 
@@ -72,6 +72,27 @@ class handler(BaseHTTPRequestHandler):
                 }
                 self.wfile.write(json.dumps(response).encode())
 
+        
+        except AppwriteException as e:
+            # Set the headers before sending the response code
+            self.send_response(400)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+
+            # Log the exception and relevant information
+            print("Exception:", e)
+            print("Document ID:", doc_id)
+            result = database.get_document(db_id, collection_id, doc_id)
+            response = {
+                'statusCode': 404,
+                'errors': str(e),
+                'logging': {
+                    'result': result,
+                    'VarName': doc_id
+                }
+            }
+            self.wfile.write(json.dumps(response).encode())
+
         except Exception as e:
             # Set the headers before sending the response code
             self.send_response(400)
@@ -91,7 +112,6 @@ class handler(BaseHTTPRequestHandler):
                 }
             }
             self.wfile.write(json.dumps(response).encode())
-
 
 
 # This part is needed for local testing, it won't be executed when deployed on Vercel
