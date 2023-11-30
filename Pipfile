@@ -1,0 +1,12 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+ 
+[packages]
+appwrite = "4.1.0"
+requests = "2.31.0"
+vercel = "0.2.1"
+ 
+[requires]
+python_version = "3.6"
