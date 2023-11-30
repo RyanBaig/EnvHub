@@ -17,7 +17,7 @@ collection_id = "key-value-pair"
 
 database = Databases(client)
 
-result = database.get_document(db_id, collection_id, doc_id)
+
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -36,6 +36,8 @@ class handler(BaseHTTPRequestHandler):
                 return
             doc_id: str = var_name
 
+            result = database.get_document(db_id, collection_id, doc_id)
+            
             if not doc_id:
                 self.send_response(400)
                 self.send_header('Content-type', 'application/json')
