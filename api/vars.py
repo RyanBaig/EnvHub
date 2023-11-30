@@ -39,12 +39,11 @@ class handler(BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write({"message": "varName parameter is required"})
                 return
-
+                
             database = Databases(client)
 
             result = database.get_document(db_id, collection_id, doc_id)
             try:
-                result = database.get_document(db_id, collection_id, doc_id)
                 print("Result:", result)
                 self.send_response(200)
                 self.send_header('Content-type', 'application/json')
@@ -56,14 +55,28 @@ class handler(BaseHTTPRequestHandler):
                 self.send_response(500)
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
-                response = {'statusCode': 500, 'errors': str(e), 'logging': {'result': result, 'VarName': doc_id}}
+                response = {
+                    'statusCode': 500,
+                    'errors': str(e),
+                    'logging': {
+                        'result': result,
+                        'VarName': doc_id
+                     }
+                    }
                 self.wfile.write(json.dumps(response).encode())
 
         except Exception as e:
             self.send_response(400)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            response = {'statusCode': 400, 'errors': str(e), 'logging': {'result': result, 'VarName': doc_id}}
+            response = {
+                'statusCode': 400,
+                'errors': str(e),
+                'logging': {
+                    'result': result,
+                    'VarName': doc_id
+                  }
+                }
             self.wfile.write(json.dumps(response).encode())
 
 
