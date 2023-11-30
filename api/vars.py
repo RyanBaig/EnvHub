@@ -15,7 +15,7 @@ client = Client()
 db_id = "env_vars"
 collection_id = "key-value-pair"
 
-class MyHandler(BaseHTTPRequestHandler):
+class handler(BaseHTTPRequestHandler):
     def handle_request(self):
         try:
             # Split the path into parts
@@ -76,6 +76,3 @@ class MyHandler(BaseHTTPRequestHandler):
 #     print('Starting server...')
 #     httpd.serve_forever()
 
-def handler(event, context):
-    my_handler = MyHandler(None, None)  # Provide None as placeholders for event and context
-    my_handler.handle_request()
