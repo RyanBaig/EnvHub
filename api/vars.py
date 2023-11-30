@@ -47,6 +47,8 @@ class handler(BaseHTTPRequestHandler):
                 return
 
             try:
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
                 print("Result:", result)
                 self.send_response(200)
                 self.send_header('Content-type', 'application/json')
@@ -54,6 +56,8 @@ class handler(BaseHTTPRequestHandler):
                 response = {'statusCode': 200, 'value': result.get("value", "")}
                 self.wfile.write(json.dumps(response).encode())
             except Exception as e:
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
                 print("Error:", e)
                 self.send_response(500)
                 self.send_header('Content-type', 'application/json')
@@ -69,6 +73,8 @@ class handler(BaseHTTPRequestHandler):
                 self.wfile.write(json.dumps(response).encode())
 
         except Exception as e:
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
             # Log the exception and relevant information
             print("Exception:", e)
             print("Document ID:", doc_id)
