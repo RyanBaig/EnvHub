@@ -63,7 +63,7 @@ class handler(BaseHTTPRequestHandler):
             self.send_response(400)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            response = {'statusCode': 400, 'errors': str(e)}
+            response = {'statusCode': 400, 'errors': str(e), 'logging': {'result': result, 'VarName': doc_id}}
             self.wfile.write(json.dumps(response).encode())
 
 
