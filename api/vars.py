@@ -16,7 +16,7 @@ db_id = "env_vars"
 collection_id = "key-value-pair"
 
 class MyHandler(BaseHTTPRequestHandler):
-    def do_GET(self, event=None, context=None):
+    def handle_request(self):
         try:
             # Split the path into parts
             path_parts = self.path.split('/')
@@ -75,4 +75,7 @@ class MyHandler(BaseHTTPRequestHandler):
 #     httpd = HTTPServer(server_address, MyHandler)
 #     print('Starting server...')
 #     httpd.serve_forever()
-handler = MyHandler()
+
+def handler(event, context):
+    my_handler = MyHandler(None, None)  # Provide None as placeholders for event and context
+    my_handler.handle_request()
