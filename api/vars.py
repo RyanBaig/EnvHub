@@ -36,6 +36,7 @@ class handler(BaseHTTPRequestHandler):
                 return
             doc_id: str = var_name
 
+            # The global database variable is already initialized before the class
             result = database.get_document(db_id, collection_id, doc_id)
 
             if not doc_id:
@@ -44,10 +45,7 @@ class handler(BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write({"message": "varName parameter is required"})
                 return
-                
-            
 
-            result = database.get_document(db_id, collection_id, doc_id)
             try:
                 print("Result:", result)
                 self.send_response(200)
@@ -66,12 +64,14 @@ class handler(BaseHTTPRequestHandler):
                     'logging': {
                         'result': result,
                         'VarName': doc_id
-                     }
                     }
+                }
                 self.wfile.write(json.dumps(response).encode())
 
         except Exception as e:
-            
+            # Log the exception and relevant information
+            print("Exception:", e)
+            print("Document ID:", doc_id)
             result = database.get_document(db_id, collection_id, doc_id)
             self.send_response(400)
             self.send_header('Content-type', 'application/json')
@@ -82,9 +82,10 @@ class handler(BaseHTTPRequestHandler):
                 'logging': {
                     'result': result,
                     'VarName': doc_id
-                  }
                 }
+            }
             self.wfile.write(json.dumps(response).encode())
+
 
 
 # This part is needed for local testing, it won't be executed when deployed on Vercel
