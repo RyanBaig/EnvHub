@@ -28,7 +28,7 @@ class handler(BaseHTTPRequestHandler):
                 self.send_response(400)
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
-                self.wfile.write(b'{"message": "Varname parameter is required"}')
+                self.wfile.write({"message": "Varname parameter is required"})
                 return
 
             doc_id = var_name
@@ -37,7 +37,7 @@ class handler(BaseHTTPRequestHandler):
                 self.send_response(400)
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
-                self.wfile.write(b'{"message": "varName parameter is required"}')
+                self.wfile.write({"message": "varName parameter is required"})
                 return
 
             database = Databases(client)
@@ -64,7 +64,7 @@ class handler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             response = {'statusCode': 400, 'errors': str(e)}
-            self.wfile.write(response.encode())
+            self.wfile.write(json.dumps(response).encode())
 
 
 # This part is needed for local testing, it won't be executed when deployed on Vercel
