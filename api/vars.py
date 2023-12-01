@@ -27,14 +27,15 @@ class handler(BaseHTTPRequestHandler):
 
             # Extract the variable name from the path
             var_name = path_parts[-1] if len(path_parts) > 1 else None
-
-            if not var_name:
+            
+            varname = var_name.split('=')[1]
+            if not varname:
                 self.send_response(400)
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
                 self.wfile.write({"message": "Varname parameter is required"})
                 return
-            doc_id: str = var_name
+            doc_id: str = varname
 
             # The global database variable is already initialized before the class
             result = database.get_document(db_id, collection_id, doc_id)
@@ -47,14 +48,15 @@ class handler(BaseHTTPRequestHandler):
                 return
 
             try:
-                # Set the headers before sending the response code
-                self.send_response(200)
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
+            
+                    # Set the headers before sending the response code
+                    self.send_response(200)
+                    self.send_header('Content-type', 'application/json')
+                    self.end_headers()
 
-                print("Result:", result)
-                response = {'statusCode': 200, 'value': result.get("value", "")}
-                self.wfile.write(json.dumps(response).encode())
+                    print("Result:", result)
+                    response = {'statusCode': 200, 'value': result.get('value')}
+                    self.wfile.write(json.dumps(response).encode())
             except Exception as e:
                 # Set the headers before sending the response code
                 self.send_response(500)
@@ -79,17 +81,10 @@ class handler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'application/json')
             self.end_headers()
 
-            # Log the exception and relevant information
-            print("Exception:", e)
-            print("Document ID:", doc_id)
-            result = database.get_document(db_id, collection_id, doc_id)
+            
             response = {
                 'statusCode': 404,
                 'errors': str(e),
-                'logging': {
-                    'result': result,
-                    'VarName': doc_id
-                }
             }
             self.wfile.write(json.dumps(response).encode())
 
@@ -99,17 +94,11 @@ class handler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'application/json')
             self.end_headers()
 
-            # Log the exception and relevant information
-            print("Exception:", e)
-            print("Document ID:", doc_id)
-            result = database.get_document(db_id, collection_id, doc_id)
+            
+            
             response = {
                 'statusCode': 400,
                 'errors': str(e),
-                'logging': {
-                    'result': result,
-                    'VarName': doc_id
-                }
             }
             self.wfile.write(json.dumps(response).encode())
 
@@ -117,9 +106,8 @@ class handler(BaseHTTPRequestHandler):
 # This part is needed for local testing, it won't be executed when deployed on Vercel
 # if __name__ == '__main__':
 #     from http.server import HTTPServer
-
 #     server_address = ('', 8000)
-#     httpd = HTTPServer(server_address, MyHandler)
+#     httpd = HTTPServer(server_address, handler)
 #     print('Starting server...')
 #     httpd.serve_forever()
 
