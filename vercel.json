@@ -1,8 +1,14 @@
 {
-    "functions": {
-        "api/vars.py": {
-            "maxDuration": 10
-        }
-    },
-    "cleanUrls": true
+  "functions": {
+    "api/vars.py": {
+      "maxDuration": 10
+    }
+  },
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "destination": "/pages/:path*"
+    }
+  ]
 }
