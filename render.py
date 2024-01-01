@@ -21,7 +21,7 @@ def render_template(template_content, context):
 
 def render_and_save_html_files(directory, context):
     # Get a list of HTML files in the specified directory
-    html_files = ["index.html", "getting-started/index.html", "getting-started/introduction/index.html", "getting-started/introduction/accessing-variables.html", "getting-started/introduction/accounts.html", "getting-started/introduction/setting-variables.html"]
+    html_files = ["index", "getting-started/index", "getting-started/introduction/index", "getting-started/introduction/accessing-variables", "getting-started/introduction/accounts", "getting-started/introduction/setting-variables"]
 
     # Determine the script's directory
     script_directory = os.path.dirname(os.path.abspath(__file__))
@@ -29,7 +29,8 @@ def render_and_save_html_files(directory, context):
     # Loop through each HTML file
     for filename in html_files:
         # Construct the full path to the template file
-        template_path = os.path.join(script_directory, directory, filename)
+        template_path = os.path.join(script_directory, directory, filename + ".jinja")
+        html_template_path = os.path.join(script_directory, directory, filename + ".html")
 
         # Read the content of the original file
         with open(template_path, 'r') as file:
@@ -39,7 +40,7 @@ def render_and_save_html_files(directory, context):
         rendered_content = render_template(original_content, context)
 
         # Save the rendered content back to the original file
-        with open(template_path, 'w') as file:
+        with open(html_template_path, 'w') as file:
             file.write(rendered_content)
 
 if __name__ == "__main__":
