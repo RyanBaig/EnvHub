@@ -23,7 +23,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
@@ -36,7 +36,7 @@ paths:
                   value:
                     type: string
                     example: "Your variable value"
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -49,7 +49,7 @@ paths:
                   errors:
                     type: string
                     example: "Error details"
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -62,7 +62,7 @@ paths:
                   errors:
                     type: string
                     example: "Resource not found"
-        '500':
+        "500":
           description: Internal Server Error
           content:
             application/json:
@@ -86,11 +86,11 @@ paths:
                         example: "Error Variable Name"
 
 security:
-  - EnvHub Account API Key: []  # Use the name of your security scheme here
+  - EnvHub Account API Key: [] # Use the name of your security scheme here
 
 components:
   securitySchemes:
     EnvHub Account API Key:
       type: apiKey
-      in: header  # You can specify "query" if your API key is passed as a query parameter
-      name: Authorization  # Name of the header or query parameter
+      in: header # You can specify "query" if your API key is passed as a query parameter
+      name: Authorization # Name of the header or query parameter

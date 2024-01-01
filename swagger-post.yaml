@@ -26,7 +26,7 @@ paths:
                 varValue:
                   type: string
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
@@ -45,7 +45,7 @@ paths:
                   varValue:
                     type: string
                     example: "YourVariableValue"
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -58,7 +58,7 @@ paths:
                   error:
                     type: string
                     example: "'varName' and 'varValue' parameters are required. Make sure they are present and try again."
-        '409':
+        "409":
           description: Conflict
           content:
             application/json:
@@ -71,7 +71,7 @@ paths:
                   error:
                     type: string
                     example: "varName already exists. Please use a different name and Try again."
-        '500':
+        "500":
           description: Internal Server Error
           content:
             application/json:
@@ -95,11 +95,11 @@ paths:
                         example: "Error Variable Name"
 
 security:
-  - EnvHub Account API Key: []  # Use the name of your security scheme here
+  - EnvHub Account API Key: [] # Use the name of your security scheme here
 
 components:
   securitySchemes:
     EnvHub Account API Key:
       type: apiKey
-      in: header  # You can specify "query" if your API key is passed as a query parameter
-      name: Authorization  # Name of the header or query parameter
+      in: header # You can specify "query" if your API key is passed as a query parameter
+      name: Authorization # Name of the header or query parameter

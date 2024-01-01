@@ -1,10 +1,10 @@
 import json
 from http.server import BaseHTTPRequestHandler
-from appwrite.exception import AppwriteException
+
 from appwrite.client import Client
+from appwrite.exception import AppwriteException
 from appwrite.services.databases import Databases
 from envhub.api import get_var
-
 
 client = Client()
 

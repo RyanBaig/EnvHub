@@ -17,13 +17,13 @@
 
 <body class="bg-dark text-light simplebar">
     {% for component_name, component_content in components.items() %}
-        {% if component_name == "navbar" %}
-            {{ component_content }}
+    {% if component_name == "navbar" %}
+    {{ component_content }}
 
-        {% elif component_name == "sidebar" %}
-            {{ component_content }}
+    {% elif component_name == "sidebar" %}
+    {{ component_content }}
 
-        {% endif %}
+    {% endif %}
     {% endfor %}
 
     <!-- Main Content -->

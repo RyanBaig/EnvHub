@@ -1,9 +1,10 @@
-from http.server import BaseHTTPRequestHandler
-from appwrite.exception import AppwriteException
-from appwrite.client import Client
-from appwrite.services.databases import Databases
 import json
 import logging
+from http.server import BaseHTTPRequestHandler
+
+from appwrite.client import Client
+from appwrite.exception import AppwriteException
+from appwrite.services.databases import Databases
 from envhub.api import get_var
 
 logging.basicConfig(level=logging.INFO)
