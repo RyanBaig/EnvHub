@@ -2,10 +2,13 @@ openapi: 3.0.0
 
 tags:
   - name: Setting Variables
-    description: Setting a Env-Variable.
+    description: Setting an Env-Variable.
 
+servers:
+  - url: https://envhub.ryanbaig.vercel.app/api/
+    description: Production server
 paths:
-  /api/vars/set:
+  /vars/set:
     post:
       tags:
         - Setting Variables
@@ -33,9 +36,15 @@ paths:
                   statusCode:
                     type: integer
                     example: 200
-                  value:
+                  message:
                     type: string
-                    example: "Your variable value"
+                    example: "Variable added to the database successfully."
+                  varName:
+                    type: string
+                    example: "YourVariableName"
+                  varValue:
+                    type: string
+                    example: "YourVariableValue"
         '400':
           description: Bad Request
           content:
@@ -46,11 +55,11 @@ paths:
                   statusCode:
                     type: integer
                     example: 400
-                  errors:
+                  error:
                     type: string
-                    example: "Error details"
-        '404':
-          description: Not Found
+                    example: "'varName' and 'varValue' parameters are required. Make sure they are present and try again."
+        '409':
+          description: Conflict
           content:
             application/json:
               schema:
@@ -58,10 +67,10 @@ paths:
                 properties:
                   statusCode:
                     type: integer
-                    example: 404
-                  errors:
+                    example: 409
+                  error:
                     type: string
-                    example: "Resource not found"
+                    example: "varName already exists. Please use a different name and Try again."
         '500':
           description: Internal Server Error
           content:
@@ -72,7 +81,7 @@ paths:
                   statusCode:
                     type: integer
                     example: 500
-                  errors:
+                  error:
                     type: string
                     example: "Internal Server Error Message"
                   logging:

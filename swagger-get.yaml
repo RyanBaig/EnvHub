@@ -4,8 +4,12 @@ tags:
   - name: Accessing Variables
     description: Accessing Value of the Env-Variable.
 
+servers:
+  - url: https://envhub.ryanbaig.vercel.app/api/
+    description: Production server
+
 paths:
-  /api/vars/get?varName={varName}:
+  /vars/get?varName={varName}:
     get:
       tags:
         - Accessing Variables
