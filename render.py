@@ -1,5 +1,8 @@
 import os
-from jinja2 import Environment, FileSystemLoader
+try:
+    from jinja2 import Environment, FileSystemLoader
+except ImportError:
+    os.system("pip install jinja2")
 
 def render_template(template_content, context):
     # Create a Jinja2 environment and specify the loader
