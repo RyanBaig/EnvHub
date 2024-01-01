@@ -11,8 +11,24 @@
       "destination": "/pages/index"
     },
     {
-      "source": "/my-variables",
-      "destination": "/api/variables_settings"
+      "source": "/getting-started",
+      "destination": "/pages/getting-started/index"
+    },
+    {
+      "source": "/getting-started/introduction",
+      "destination": "/pages/getting-started/introduction/index"
+    },
+    {
+      "source": "/getting-started/introduction/accounts",
+      "destination": "/pages/getting-started/introduction/accounts"
+    },
+    {
+      "source": "/getting-started/introduction/accessing-variables",
+      "destination": "/pages/getting-started/introduction/accessing-variables"
+    },
+    {
+      "source": "/getting-started/introduction/setting-variables",
+      "destination": "/pages/getting-started/introduction/setting-variables"
     }
   ]
 }
