@@ -1,6 +1,8 @@
 import os
+import sys
+import subprocess
 
-os.system('pip install jinja2')
+subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'jinja2'])
 
 from jinja2 import Environment, FileSystemLoader
 
