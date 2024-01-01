@@ -1,6 +1,6 @@
 import os
 
-os.system("pip install jinja2")
+os.system('".venv/Scripts/activate" && pip install jinja2')
 
 from jinja2 import Environment, FileSystemLoader
 
