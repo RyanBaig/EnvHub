@@ -1,0 +1,99 @@
+/* Customize scrollbar track */
+.simplebar-track {
+    background: #333;
+    /* Set the background color of the track */
+}
+
+/* Customize scrollbar handle */
+.simplebar-scrollbar {
+    background: #555;
+    /* Set the color of the scrollbar handle */
+}
+
+/* Customize scrollbar handle on hover */
+.simplebar-scrollbar:hover {
+    background: #777;
+    /* Set the color of the scrollbar handle on hover */
+}
+
+#navbar-img {
+    margin-left: 10px;
+    margin-right: 3px;
+}
+
+/* Hide the default scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #333;
+    /* Set the background color of the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #555;
+    /* Set the color of the scrollbar handle */
+    border-radius: 6px;
+    /* Set the border radius of the handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+    /* Set the color of the scrollbar handle on hover */
+}
+
+/* Firefox scrollbar */
+body {
+    scrollbar-color: #555 #333;
+    /* Set the color of the scrollbar for Firefox */
+    scrollbar-width: thin;
+    /* Set the width of the scrollbar for Firefox */
+    margin-right: 5px;
+    background-color: #343a40;
+    /* Dark background color */
+    color: #fff;
+    /* Light text color */
+    background-color: #343a40;
+    /* Dark background color */
+    color: #fff;
+    /* Light text color */
+
+}
+
+#main-content {
+    text-align: left;
+    margin-left: 250px;
+    margin-top: 10px
+        
+}
+
+#sidebar {
+    background-color: #2c3036;
+    /* Sidebar background color */
+    padding: 15px;
+    margin-top: 20px;
+    /* Add padding to body to avoid overlap with fixed navbar */
+    height: 100vh;
+    /* Full height sidebar */
+    position: fixed;
+    left: 0;
+    top: 56px;
+    /* Height of the fixed navbar */
+    overflow-y: auto;
+    /* Add scroll to the sidebar if needed */
+}
+
+#sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 15px;
+}
+
+#sidebar a:hover {
+    text-decoration: underline;
+}

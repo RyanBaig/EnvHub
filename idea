@@ -39,4 +39,16 @@ Feedback Mechanism:
 Implement feedback mechanisms, such as success messages or error notifications, to keep users informed about the status of their actions.
 User Account Management (Optional):
 
-If applicable, consider adding user accounts to allow users to save and manage their environment variables across sessions.
+If applicable, consider adding user accounts to allow users to save and manage their environment variables across sessions
+
+for rendering:
+{% for component_name, component_content in components.items() %}
+    {% if component_name == "navbar" %}
+    {{ component_content }}
+
+    {% elif component_name == "sidebar" %}
+    {{ component_content }}
+
+    {% endif %}
+    {% endfor %}
+

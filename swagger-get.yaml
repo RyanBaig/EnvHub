@@ -1,0 +1,92 @@
+openapi: 3.0.0
+
+tags:
+  - name: Accessing Variables
+    description: Accessing Value of the Env-Variable.
+
+paths:
+  /api/vars/get?varName={varName}:
+    get:
+      tags:
+        - Accessing Variables
+      summary: Get the Value of a Variable.
+      description: Get the Value of a Variable.
+      parameters:
+        - name: varName
+          in: query
+          description: Name of the variable
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  value:
+                    type: string
+                    example: "Your variable value"
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 400
+                  errors:
+                    type: string
+                    example: "Error details"
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 404
+                  errors:
+                    type: string
+                    example: "Resource not found"
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 500
+                  errors:
+                    type: string
+                    example: "Internal Server Error Message"
+                  logging:
+                    type: object
+                    properties:
+                      result:
+                        type: string
+                        example: "Error Result"
+                      VarName:
+                        type: string
+                        example: "Error Variable Name"
+
+security:
+  - EnvHub Account API Key: []  # Use the name of your security scheme here
+
+components:
+  securitySchemes:
+    EnvHub Account API Key:
+      type: apiKey
+      in: header  # You can specify "query" if your API key is passed as a query parameter
+      name: Authorization  # Name of the header or query parameter

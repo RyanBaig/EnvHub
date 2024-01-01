@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting Variables - EnvHub Getting Started</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.min.css"
+        integrity="sha512-rptDreZF629VL73El0GaBEH9tlYEKDJFUr+ysb+9whgSGbwYfGGA61dVtQFL0qC8/SZv/EQFW5JtwEFf+8zKYg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/assets/getting-started.css">
+    <script src="https://unpkg.com/swagger-ui-dist@5.10.3/swagger-ui-bundle.js"></script>
+    <link rel="stylesheet" href="/assets/swagger.css">
+</head>
+
+<body class="bg-dark text-light simplebar">
+{% for component_name, component_content in components.items() %}
+{% if component_name == "navbar" %}
+{{ component_content }}
+
+{% elif component_name == "sidebar" %}
+{{ component_content }}
+
+{% endif %}
+{% endfor %}
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <h3>Setting Environment Variables</h3>
+        <h6>Once logged in, you can easily add and set your environment variables.</h6>
+        <h6>Follow these simple steps to set/configure your variables using the dashboard</h6>
+        <ol>
+            <li>Log in to your EnvHub account.</li>
+            <li>Navigate to the <a href="/dashboard">dashboard</a> page.</li>
+            <li>Add and configure your environment variables.</li>
+        </ol>
+        <h6>Alternatively, you can also use the API to set your variables.</h6>
+        <div id="endpoint"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.min.js"
+        integrity="sha512-HV1U44HR4mYVDcsxzJpghYyGEy2PvbePe9UFXlV3vnzf4yFhbKA9QNpnhy4VWwnaC2jKzijITVWHPZBCOuc51g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        window.onload = function () {
+            SwaggerUIBundle({
+                url: "/swagger-post.yaml",
+                dom_id: "#endpoint",
+
+            });
+        };
+    </script>
+</body>
+
+</html>

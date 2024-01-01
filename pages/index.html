@@ -1,38 +1,149 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Home - EnvHub</title>
-    <!-- Bootstrap CSS Link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+  <head>
+      <title>Home - EnvHub</title>
+      <!-- CSS only -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.min.css"
+          integrity="sha512-rptDreZF629VL73El0GaBEH9tlYEKDJFUr+ysb+9whgSGbwYfGGA61dVtQFL0qC8/SZv/EQFW5JtwEFf+8zKYg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <style>
+        /* Customize scrollbar track */
+        .simplebar-track {
+        background: #333; /* Set the background color of the track */
+        }
 
-<body>
+        /* Customize scrollbar handle */
+        .simplebar-scrollbar {
+        background: #555; /* Set the color of the scrollbar handle */
+        }
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="mx-2">
-            <a class="navbar-brand" href="#">EnvHub</a>
-            <!-- Add any additional navigation links if needed -->
-        </div>
-    </nav>
+        /* Customize scrollbar handle on hover */
+        .simplebar-scrollbar:hover {
+        background: #777; /* Set the color of the scrollbar handle on hover */
+        }
 
-    <!-- Hero Section -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-lg-6">
-                <h1>Welcome to EnvHub!</h1>
-                <p>Describe what your app does and its benefits.</p>
-                <!-- Add a call-to-action button if needed -->
-            </div>
-            <!-- You can add an image or any other content in the second column -->
-        </div>
-    </div>
+        #navbar-img {
+            margin-left: 10px;
+            margin-right: 3px;
+        }
+        /* Hide the default scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+        width: 12px;
+        }
 
-    <!-- Bootstrap JS and Popper.js (required for Bootstrap's JavaScript plugins) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+        /* Track */
+        ::-webkit-scrollbar-track {
+        background: #333; /* Set the background color of the track */
+        }
 
-</html>
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+        background: #555; /* Set the color of the scrollbar handle */
+        border-radius: 6px; /* Set the border radius of the handle */
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+        background: #777; /* Set the color of the scrollbar handle on hover */
+        }
+
+        /* Firefox scrollbar */
+        body {
+        scrollbar-color: #555 #333; /* Set the color of the scrollbar for Firefox */
+        scrollbar-width: thin; /* Set the width of the scrollbar for Firefox */
+        margin-right: 5px;
+        }
+      </style>
+  </head>
+
+  <body class="bg-dark text-light simplebar">
+    
+        
+    
+    
+    <!-- Navigation -->
+        <nav data-bs-theme="dark" class="navbar navbar-expand-lg bg-body-tertiary">
+                <a style="margin-right: 5px;" class="navbar-brand" href="/">
+                    <img id="navbar-img" src="../LOGO.jpg" height="50px" width="50px">
+                    EnvHub
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav">
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/getting-started">Getting Started</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard">Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </nav>
+    
+    
+    
+    
+          <!-- Hero section -->
+          <header class="bg-secondary text-white text-center py-5">
+              <div class="container">
+                  <h1>Welcome to EnvHub</h1>
+                  <p>Streamlining environment variable management and securing secrets for developers.</p>
+                  <div class="btn-group">
+                      <a href="/sign-up" class="btn btn-outline-primary">Sign Up</a>
+                      <a href="/log-in" class="btn btn-outline-light">Log In</a>
+                  </div>
+              </div>
+          </header>
+          <hr>
+          <section class="container mt-4">
+              <h2 class="text-decoration-underline text-center mb-5">Key Features</h2>
+              <div class="row">
+                  <!-- Feature 1 -->
+                  <div class="col-md-4">
+                      <h3>Easy Variable Management</h3>
+                      <p>Effortlessly set and manage environment variables with a user-friendly interface.</p>
+                  </div>
+                  <!-- Feature 2 -->
+                  <div class="col-md-4">
+                      <h3>Secure Secrets Storage</h3>
+                      <p>Protect sensitive information by securely storing secrets, passwords, and keys.</p>
+                  </div>
+                  <!-- Feature 3 -->
+                  <div class="col-md-4">
+                      <h3>Developer-Friendly API</h3>
+                      <p>Access variable values through a simple and well-documented API.</p>
+                  </div>
+              </div>
+          </section>
+          <hr>
+           <!-- Get Started CTA -->
+           <section class="py-5 mt-5">
+               <div class="container text-center">
+                   <h2>Get Started with EnvHub Today</h2>
+                   <p>Follow our easy installation guide to start using EnvHub in your projects.</p>
+                   <a href="/getting-started" class="btn btn-primary">Get Started</a>
+               </div>
+           </section>
+      <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.min.js"
+    integrity="sha512-HV1U44HR4mYVDcsxzJpghYyGEy2PvbePe9UFXlV3vnzf4yFhbKA9QNpnhy4VWwnaC2jKzijITVWHPZBCOuc51g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </body>
+
+  </html>
