@@ -20,7 +20,7 @@ collection_id = "key-value-pair"
 
 database = Databases(client)
 
-class MyHandler(BaseHTTPRequestHandler):
+class handler(BaseHTTPRequestHandler):
     def do_POST(self):
         try:
             # Get the varname and varvalue from request body
