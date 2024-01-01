@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: EnvHub
+Version: 1.1
+Home-page: https://github.com/RyanBaig/EnvHub-Python
+Author: RyanBaig
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+
+    # EnvHub Python SDK
+    ## Hello, This is the **official** Python SDK for [EnvHub](https://envhub.ryanbaig.vercel.app).
+    
