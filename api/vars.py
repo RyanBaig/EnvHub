@@ -1,6 +1,6 @@
 import json
 from http.server import BaseHTTPRequestHandler
-
+from envhub.api import get_var
 from appwrite.client import Client
 from appwrite.exception import AppwriteException
 from appwrite.services.databases import Databases
@@ -10,7 +10,7 @@ client = Client()
 (client
     .set_endpoint('https://cloud.appwrite.io/v1')
     .set_project('envhub')
-    .set_key('658ee3ae6bf33c40348e1068bf0ee92773b07eb5f2b53152232e1434ea563b5b0d2bb799f911db728e51f2557e7efb16b9f971a2ae9df90f3a2f042e746203aa8c6776b6420c4f91315a95bfa565ebc13c56d283cefa51a11882d09cbcd1849f532b8a5cdebebc35fec980baa9c1a2ed33a0d5c82cbf68b40539b2a6b9b457a4')
+    .set_key(get_var('APPWRITE_API_KEY'))
 )
 
 db_id = "env_vars"
