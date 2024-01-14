@@ -5,7 +5,7 @@ tags:
     description: Accessing Value of the Env-Variable.
 
 servers:
-  - url: https://envhub.ryanbaig.vercel.app/api/
+  - url: https://envhub.rb-projects.vercel.app/api/
     description: Production server
 
 paths:

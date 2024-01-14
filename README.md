@@ -1,4 +1,4 @@
-![Logo](https://envhub.ryanbaig.vercel.app/LOGO.jpg)
+![Logo](https://envhub.rb-projects.vercel.app/LOGO.jpg)
 
 <h1 style="text: center;">EnvHub</h1>
 
@@ -12,7 +12,7 @@ EnvHub simplifies environment variable management, offering a user-friendly inte
 
 ## API Reference
 
-You can check out the APIs documentation for [getting the variable](https://envhub.ryanbaig.vercel.app/getting-started/introduction/accessing-variables) and [setting the variable](https://envhub.ryanbaig.vercel.app/getting-started/introduction/setting-variables) on their respective links.
+You can check out the APIs documentation for [getting the variable](https://envhub.rb-projects.vercel.app/getting-started/introduction/accessing-variables) and [setting the variable](https://envhub.rb-projects.vercel.app/getting-started/introduction/setting-variables) on their respective links.
 
 ## Authors
 
