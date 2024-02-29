@@ -4,7 +4,7 @@ from appwrite.client import Client
 from appwrite.exception import AppwriteException
 from appwrite.services.databases import Databases
 import os
-os.system("pip install -r requirements.txt && pip install envhub==latest")
+os.system("pip install -r requirements.txt && pip install envhub==1.4")
 from envhub.api import get_var
 
 client = Client()
